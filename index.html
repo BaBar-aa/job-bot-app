@@ -9,115 +9,103 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
-  background: #0f172a;
-  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
   padding-bottom: 100px;
   min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: 
-    radial-gradient(ellipse at top, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom left, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
-  z-index: 0;
-  pointer-events: none;
 }
 
 .hero {
   position: relative;
-  z-index: 1;
-  padding: 32px 20px 24px;
-  text-align: center;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+  padding: 40px 24px 60px;
+  color: white;
+  overflow: hidden;
 }
 
-.hero-badge {
-  display: inline-block;
-  padding: 6px 14px;
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  border-radius: 24px;
-  font-size: 12px;
-  color: #a5b4fc;
-  margin-bottom: 16px;
-  backdrop-filter: blur(10px);
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: #f8fafc;
+  border-radius: 30px 30px 0 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 30px;
+  font-weight: 700;
   margin-bottom: 12px;
-  background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   letter-spacing: -0.5px;
 }
 
-.hero-subtitle {
-  color: #94a3b8;
-  font-size: 14px;
+.hero p {
+  font-size: 15px;
+  opacity: 0.9;
   line-height: 1.5;
+  max-width: 320px;
 }
 
 .content {
-  position: relative;
-  z-index: 1;
   padding: 0 16px;
+  margin-top: -20px;
+  position: relative;
+  z-index: 2;
 }
 
 .card {
-  background: rgba(30, 41, 59, 0.5);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(148, 163, 184, 0.1);
-  border-radius: 24px;
-  padding: 22px;
-  margin-bottom: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
   margin-bottom: 18px;
 }
 
-.card-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-}
-
 .card-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  color: #f1f5f9;
-  flex: 1;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .counter {
-  background: rgba(99, 102, 241, 0.2);
-  color: #a5b4fc;
+  background: #eff6ff;
+  color: #2563eb;
   padding: 4px 12px;
   border-radius: 12px;
   font-size: 13px;
   font-weight: 600;
-  min-width: 32px;
+  min-width: 28px;
   text-align: center;
 }
 
@@ -129,37 +117,39 @@ body::before {
 
 .chip {
   padding: 10px 16px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  border-radius: 20px;
-  background: rgba(15, 23, 42, 0.5);
-  color: #cbd5e1;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  color: #475569;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   user-select: none;
 }
 
-.chip:active {
-  transform: scale(0.95);
+.chip:hover {
+  border-color: #2563eb;
+  color: #2563eb;
 }
 
 .chip.active {
-  background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
-  border-color: transparent;
+  background: #2563eb;
+  border-color: #2563eb;
   color: white;
-  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.5);
 }
 
 .salary-display {
   text-align: center;
-  font-size: 36px;
-  font-weight: 800;
-  margin: 12px 0 20px;
-  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 8px 0 20px;
+  color: #0f172a;
   letter-spacing: -1px;
+}
+
+.salary-display span {
+  color: #2563eb;
 }
 
 .slider-container {
@@ -168,30 +158,30 @@ body::before {
 
 .salary-slider {
   width: 100%;
-  height: 8px;
-  border-radius: 4px;
-  background: rgba(148, 163, 184, 0.2);
+  height: 6px;
+  border-radius: 3px;
+  background: #e2e8f0;
   appearance: none;
   outline: none;
 }
 
 .salary-slider::-webkit-slider-thumb {
   appearance: none;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  background: #2563eb;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
-  border: 3px solid #0f172a;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
 }
 
 .salary-range {
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
-  font-size: 11px;
-  color: #64748b;
+  font-size: 12px;
+  color: #94a3b8;
 }
 
 .toggle-row {
@@ -208,45 +198,45 @@ body::before {
 .toggle-label {
   font-size: 15px;
   font-weight: 600;
-  color: #f1f5f9;
+  color: #0f172a;
   margin-bottom: 4px;
 }
 
 .toggle-desc {
-  font-size: 12px;
-  color: #94a3b8;
+  font-size: 13px;
+  color: #64748b;
 }
 
 .toggle {
-  width: 56px;
-  height: 32px;
-  background: rgba(148, 163, 184, 0.2);
-  border-radius: 16px;
+  width: 48px;
+  height: 28px;
+  background: #cbd5e1;
+  border-radius: 14px;
   position: relative;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.2s;
   flex-shrink: 0;
 }
 
 .toggle.active {
-  background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+  background: #2563eb;
 }
 
 .toggle::after {
   content: '';
   position: absolute;
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: white;
   top: 3px;
   left: 3px;
-  transition: left 0.3s;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: left 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .toggle.active::after {
-  left: 27px;
+  left: 23px;
 }
 
 .submit-container {
@@ -255,49 +245,47 @@ body::before {
   left: 0;
   right: 0;
   padding: 16px;
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 30%);
-  backdrop-filter: blur(20px);
+  background: white;
+  border-top: 1px solid #e2e8f0;
   z-index: 10;
 }
 
 .submit-btn {
   width: 100%;
-  padding: 18px;
-  background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+  padding: 16px;
+  background: #2563eb;
   color: white;
   border: none;
-  border-radius: 16px;
+  border-radius: 12px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5);
-  transition: all 0.2s;
-  letter-spacing: 0.5px;
+  transition: background 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.submit-btn:hover {
+  background: #1d4ed8;
 }
 
 .submit-btn:active {
-  transform: scale(0.97);
-}
-
-.submit-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  transform: scale(0.98);
 }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <div class="hero-badge">⚡ AI-аар тохирох ажил</div>
-  <h1>Ажлын тохиргоо</h1>
-  <p class="hero-subtitle">Танд яг таарах ажлыг<br>өдөр бүр илгээх болно</p>
+  <div class="hero-content">
+    <h1>Ажлын тохиргоо</h1>
+    <p>Танд таарах ажлыг өдөр бүр Telegram-аар автомат хүлээн авна уу.</p>
+  </div>
 </div>
 
 <div class="content">
 
 <div class="card">
   <div class="card-header">
-    <div class="card-icon">🎯</div>
     <div class="card-title">Чиглэл</div>
     <div class="counter" id="catCounter">0</div>
   </div>
@@ -306,14 +294,13 @@ body::before {
 
 <div class="card">
   <div class="card-header">
-    <div class="card-icon">💰</div>
     <div class="card-title">Хүсэх цалин</div>
   </div>
-  <div class="salary-display" id="salaryDisplay">3 сая+</div>
+  <div class="salary-display"><span id="salaryDisplay">3 сая+</span></div>
   <div class="slider-container">
     <input type="range" min="0" max="10" value="5" step="1" class="salary-slider" id="salary">
     <div class="salary-range">
-      <span>0</span>
+      <span>Хязгааргүй</span>
       <span>15 сая+</span>
     </div>
   </div>
@@ -321,7 +308,6 @@ body::before {
 
 <div class="card">
   <div class="card-header">
-    <div class="card-icon">📍</div>
     <div class="card-title">Байршил</div>
   </div>
   <div class="chip-grid" id="locations"></div>
@@ -330,8 +316,8 @@ body::before {
 <div class="card">
   <div class="toggle-row">
     <div class="toggle-info">
-      <div class="toggle-label">🏠 Зайнаас ажиллах</div>
-      <div class="toggle-desc">Гэрээсээ ажилах боломжтой</div>
+      <div class="toggle-label">Зайнаас ажиллах</div>
+      <div class="toggle-desc">Гэрээсээ ажилах боломжтой зар</div>
     </div>
     <div class="toggle" id="remoteToggle"></div>
   </div>
@@ -340,7 +326,7 @@ body::before {
 </div>
 
 <div class="submit-container">
-  <button class="submit-btn" onclick="submit()">Хадгалах →</button>
+  <button class="submit-btn" onclick="submit()">Хадгалах</button>
 </div>
 
 <script>
@@ -349,40 +335,40 @@ tg.ready();
 tg.expand();
 
 const CATEGORIES = {
-  it: "💻 МТ",
-  finance: "💵 Санхүү",
-  hr: "👥 HR",
-  marketing: "📢 Маркетинг",
-  sales: "🛍 Худалдаа",
-  design: "🎨 Дизайн",
-  legal: "⚖️ Хууль",
-  construction: "🏗 Барилга",
-  manufacturing: "🏭 Үйлдвэрлэл",
-  mining: "⛏ Уул уурхай",
-  logistics: "🚚 Тээвэр",
-  agriculture: "🌾 ХАА",
-  energy: "⚡ Эрчим хүч",
-  auto: "🔧 Авто",
-  restaurant: "🍽 Ресторан",
-  tourism: "🏨 Зочид буудал",
-  health: "🏥 Эрүүл мэнд",
-  education: "📚 Боловсрол",
-  telecom: "📞 Харилцаа",
-  sport: "⚽ Спорт",
-  art: "🎭 Урлаг",
-  service: "🧹 Үйлчилгээ",
-  security: "🛡 Хамгаалалт",
-  insurance: "🛡 Даатгал",
-  project: "📋 Төсөл",
+  it: "МТ, програм хангамж",
+  finance: "Санхүү, нягтлан",
+  hr: "Хүний нөөц",
+  marketing: "Маркетинг, PR",
+  sales: "Худалдаа, борлуулалт",
+  design: "Дизайн",
+  legal: "Хууль, эрх зүй",
+  construction: "Барилга",
+  manufacturing: "Үйлдвэрлэл",
+  mining: "Уул уурхай",
+  logistics: "Тээвэр, логистик",
+  agriculture: "Хөдөө аж ахуй",
+  energy: "Эрчим хүч",
+  auto: "Авто засвар",
+  restaurant: "Ресторан, кафе",
+  tourism: "Зочид буудал",
+  health: "Эрүүл мэнд",
+  education: "Боловсрол",
+  telecom: "Харилцаа холбоо",
+  sport: "Спорт, фитнес",
+  art: "Урлаг, кино",
+  service: "Үйлчилгээ",
+  security: "Хамгаалалт",
+  insurance: "Даатгал",
+  project: "Төсөл, ТББ",
 };
 
 const LOCATIONS = {
-  any: "🌐 Хамаагүй",
-  ub: "🏙 Улаанбаатар",
-  darkhan: "🌆 Дархан",
-  erdenet: "🏔 Эрдэнэт",
-  countryside: "🌾 Аймагт",
-  remote: "💻 Зайнаас",
+  any: "Хамаагүй",
+  ub: "Улаанбаатар",
+  darkhan: "Дархан",
+  erdenet: "Эрдэнэт",
+  countryside: "Аймагт",
+  remote: "Зайнаас",
 };
 
 const SALARY_VALUES = [0, 500000, 1000000, 1500000, 2000000, 3000000, 4000000, 5000000, 7000000, 10000000, 15000000];
@@ -451,11 +437,8 @@ remoteToggle.onclick = () => {
 
 function submit() {
   if (state.categories.size === 0) {
-    if (tg.showAlert) {
-      tg.showAlert('Дор хаяж 1 чиглэл сонгоно уу');
-    } else {
-      alert('Дор хаяж 1 чиглэл сонгоно уу');
-    }
+    if (tg.showAlert) tg.showAlert('Дор хаяж 1 чиглэл сонгоно уу');
+    else alert('Дор хаяж 1 чиглэл сонгоно уу');
     return;
   }
   
